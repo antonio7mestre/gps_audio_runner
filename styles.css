@@ -1,74 +1,28 @@
-
-    body {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    #menu {
-        padding: 20px;
-    }
-
-    .run-tiles {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        overflow-y: scroll;
-        max-height: 80vh; /* Adjust based on your needs */
-    }
-
-    .run-tile {
-        flex: 1 0 calc(33% - 10px); /* This makes it 3 tiles per row; adjust as needed */
-        height: 150px; /* Or desired height */
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: transform 0.2s;
-    }
-
-    .run-tile:hover {
-        transform: scale(1.05);
-    }
-
-    .run-tile span {
-        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
-        color: white;
-        padding: 5px 10px;
-        border-radius: 3px;
-    }
-
-    /* Style for the container which holds the Start Run button */
-#runArea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* occupy full viewport height */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-/* Styles for the Start Run button */
-#startRun {
-    background-color: hotpink;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 20px 40px;
-    border: none;
-    border-radius: 8px;
+#map {
+    width: 600px;
+    height: 400px;
+    margin: 20px auto;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.1s; /* animation transition */
-    user-select: none; /* prevent text selection when double clicking */
 }
 
-#startRun:focus {
-    outline: none;
+ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-/* Button clicking effect */
-#startRun:active {
-    transform: scale(0.95); /* slightly reduce size when pressed */
+li {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
 }
-

@@ -1,42 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPS-triggered Audio for Runs</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <title>Running App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 <body>
-
-    <div id="menu">
-        <h1>Select a Run</h1>
-        <div class="run-tiles">
-            <div class="run-tile" onclick="selectRun('castroToDolores')" style="background-image: url('castroToDolores.jpg');">
-                <span>Castro to Dolores</span>
-            </div>
-            <!-- Additional tiles for more runs can be added in the same format -->
-        </div>
-    </div>
-
-    <div id="runArea" style="display: none;">
-        <button id="startRun">Start Run</button>
-    </div>
-
-    <!-- Audio Elements -->
-    <audio id="audio1" src="audio1.mp3"></audio>
-    <audio id="audio2" src="audio2.mp3"></audio>
-    <audio id="audio3" src="audio3.mp3"></audio>
-    <audio id="audio4" src="audio4.mp3"></audio>
-    <audio id="audio5" src="audio5.mp3"></audio>
-    <audio id="audio6" src="audio6.mp3"></audio>
-    <audio id="audio7" src="audio7.mp3"></audio>
-
-    <!-- Link to JavaScript -->
-    <script src="app.js"></script>
-
+    <h1>Welcome to the Running App</h1>
+    <ul>
+        <li><a href="run1.html">Run 1</a></li>
+        <li><a href="run2.html">Run 2</a></li>
+        <li><a href="run3.html">Run 3</a></li>
+    </ul>
 </body>
-
 </html>
