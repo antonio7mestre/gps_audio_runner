@@ -12,13 +12,13 @@ const audioFiles = {
     "checkpoint7": "audio/audio7.mp3"
 };
 const checkpoints = [
-    { lat: 40.7128, lng: -118.2437, radius: 13, audioKey: "checkpoint1" }, // Example coordinates and radius
-    { lat: 35.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint2" },
-    { lat: 36.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint3" },
-    { lat: 37.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint4" },
-    { lat: 38.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint5" },
-    { lat: 39.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint6" },
-    { lat: 32.0522, lng: -118.2437, radius: 13, audioKey: "checkpoint7" }
+    { lat: 38.885344171245684, lng: -77.09786495571288, radius: 20, audioKey: "checkpoint1" }, // Example coordinates and radius
+    { lat: 38.885905120900304, lng: -77.09729374906497, radius: 20, audioKey: "checkpoint2" },
+    { lat: 38.88649450173095, lng: -77.09643807965698, radius: 20, audioKey: "checkpoint3" },
+    { lat: 38.88715734966662, lng: -77.09550443558466, radius: 20, audioKey: "checkpoint4" },
+    { lat: 38.88809331236285, lng: -77.09511456223923, radius: 20, audioKey: "checkpoint5" },
+    { lat: 38.88922508878321, lng: -77.09525647142884, radius: 20, audioKey: "checkpoint6" },
+    { lat: 38.89076474397313, lng: -77.09514361335668, radius: 20, audioKey: "checkpoint7" }
 ];
 
 document.getElementById("startButton").addEventListener("click", function() {
@@ -119,8 +119,25 @@ function handleLocationUpdate(position) {
 }
 
 function handleError(error) {
-    console.warn(`ERROR(${error.code}): ${error.message}`);
+    let errorMessage = '';
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            errorMessage = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            errorMessage = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            errorMessage = "An unknown error occurred.";
+            break;
+    }
+    console.warn(`ERROR(${error.code}): ${errorMessage}`);
+    alert(errorMessage); // Optionally alert the user
 }
+
 
 function playAudio(audioKey) {
     const audio = new Audio(audioFiles[audioKey]);
