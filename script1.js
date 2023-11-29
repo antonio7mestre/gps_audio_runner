@@ -12,13 +12,13 @@ const audioFiles = {
     "checkpoint7": "audio/audio7.mp3"
 };
 const checkpoints = [
-    { lat: 38.885344171245684, lng: -77.09786495571288, radius: 20, audioKey: "checkpoint1" }, // Example coordinates and radius
-    { lat: 38.885905120900304, lng: -77.09729374906497, radius: 20, audioKey: "checkpoint2" },
-    { lat: 38.88649450173095, lng: -77.09643807965698, radius: 20, audioKey: "checkpoint3" },
-    { lat: 38.88715734966662, lng: -77.09550443558466, radius: 20, audioKey: "checkpoint4" },
-    { lat: 38.88809331236285, lng: -77.09511456223923, radius: 20, audioKey: "checkpoint5" },
-    { lat: 38.88922508878321, lng: -77.09525647142884, radius: 20, audioKey: "checkpoint6" },
-    { lat: 38.89076474397313, lng: -77.09514361335668, radius: 20, audioKey: "checkpoint7" }
+    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 15, audioKey: "checkpoint1" }, // Example coordinates and radius
+    { lat: 38.89095162561316, lng: -77.09519500334783, radius: 15, audioKey: "checkpoint2" },
+    { lat: 38.89139152494132, lng: -77.09419741012081, radius: 15, audioKey: "checkpoint3" },
+    { lat: 38.891828469221075, lng: -77.09312395428827, radius: 15, audioKey: "checkpoint4" },
+    { lat: 38.89112581426466, lng: -77.09258153669099, radius: 15, audioKey: "checkpoint5" },
+    { lat: 38.890257819137375, lng: -77.09200877403829, radius: 15, audioKey: "checkpoint6" },
+    { lat: 38.88933076498764, lng: -77.09188739388492, radius: 15, audioKey: "checkpoint7" }
 ];
 
 document.getElementById("startButton").addEventListener("click", function() {
