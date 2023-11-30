@@ -14,13 +14,13 @@ const audioFiles = {
     "checkpoint7": "audio/audio7.mp3"
 };
 const checkpoints = [
-    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 30, audioKey: "checkpoint1" }, // Example coordinates and radius
-    { lat: 38.89095162561316, lng: -77.09519500334783, radius: 30, audioKey: "checkpoint2" },
-    { lat: 38.89139152494132, lng: -77.09419741012081, radius: 30, audioKey: "checkpoint3" },
-    { lat: 38.891828469221075, lng: -77.09312395428827, radius: 30, audioKey: "checkpoint4" },
-    { lat: 38.89112581426466, lng: -77.09258153669099, radius: 30, audioKey: "checkpoint5" },
-    { lat: 38.89016070145141, lng: -77.09205183349134, radius: 30, audioKey: "checkpoint6" },
-    { lat: 38.890274675735874, lng: -77.09351095521677, radius: 30, audioKey: "checkpoint7" }
+    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 30, audioKey: "checkpoint1", audioPlayed: false }, // Example coordinates and radius
+    { lat: 38.89095162561316, lng: -77.09519500334783, radius: 30, audioKey: "checkpoint2", audioPlayed: false },
+    { lat: 38.89139152494132, lng: -77.09419741012081, radius: 30, audioKey: "checkpoint3", audioPlayed: false },
+    { lat: 38.891828469221075, lng: -77.09312395428827, radius: 30, audioKey: "checkpoint4", audioPlayed: false },
+    { lat: 38.89112581426466, lng: -77.09258153669099, radius: 30, audioKey: "checkpoint5", audioPlayed: false },
+    { lat: 38.89016070145141, lng: -77.09205183349134, radius: 30, audioKey: "checkpoint6", audioPlayed: false },
+    { lat: 38.890274675735874, lng: -77.09351095521677, radius: 30, audioKey: "checkpoint7", audioPlayed: false }
 ];
 
 document.getElementById("startButton").addEventListener("click", function() {
@@ -39,7 +39,8 @@ document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("stopButton").style.display = 'block';
     document.getElementById("status").innerText = "Status: Running...";
     startLocationTracking();
-    drawCheckpointCircles(); // Draw the checkpoint circles when the run starts
+    resetCheckpointAudioFlags(); // Call this function to reset the flags
+    drawCheckpointCircles(); // Draw the checkpoint circles
     // Any other code you have for starting the run...
 });
 
@@ -150,9 +151,16 @@ function handleLocationUpdate(position) {
     checkpoints.forEach(checkpoint => {
         const checkpointLocation = new google.maps.LatLng(checkpoint.lat, checkpoint.lng);
         const distance = google.maps.geometry.spherical.computeDistanceBetween(userLocation, checkpointLocation);
-        if (distance < checkpoint.radius) {
+        if (distance < checkpoint.radius && !checkpoint.audioPlayed) {
             playAudio(checkpoint.audioKey);
+            checkpoint.audioPlayed = true; // Mark as played
         }
+    });
+}
+
+function resetCheckpointAudioFlags() {
+    checkpoints.forEach(checkpoint => {
+        checkpoint.audioPlayed = false;
     });
 }
 
@@ -182,3 +190,8 @@ function playAudio(audioKey) {
     audio.play();
 }
 
+function resetCheckpointAudioFlags() {
+    checkpoints.forEach(checkpoint => {
+        checkpoint.audioPlayed = false;
+    });
+}
