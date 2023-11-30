@@ -2,6 +2,8 @@ let map;
 let isRunning = false;
 let watchId;
 let userLocationMarker = null;
+let checkpointCircles = []; // Array to store the checkpoint circles
+
 const audioFiles = {
     "checkpoint1": "audio/audio1.mp3", // Replace with your actual audio file paths
     "checkpoint2": "audio/audio2.mp3",
@@ -17,8 +19,8 @@ const checkpoints = [
     { lat: 38.89139152494132, lng: -77.09419741012081, radius: 30, audioKey: "checkpoint3" },
     { lat: 38.891828469221075, lng: -77.09312395428827, radius: 30, audioKey: "checkpoint4" },
     { lat: 38.89112581426466, lng: -77.09258153669099, radius: 30, audioKey: "checkpoint5" },
-    { lat: 38.890257819137375,  lng: -77.09525647142884, radius: 30, audioKey: "checkpoint6" },
-    { lat: 38.89076474397313, lng: -77.09514361335668, radius: 30, audioKey: "checkpoint7" }
+    { lat: 38.89016070145141, lng: -77.09205183349134, radius: 30, audioKey: "checkpoint6" },
+    { lat: 38.890274675735874, lng: -77.09351095521677, radius: 30, audioKey: "checkpoint7" }
 ];
 
 document.getElementById("startButton").addEventListener("click", function() {
@@ -37,6 +39,7 @@ document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("stopButton").style.display = 'block';
     document.getElementById("status").innerText = "Status: Running...";
     startLocationTracking();
+    drawCheckpointCircles(); // Draw the checkpoint circles when the run starts
     // Any other code you have for starting the run...
 });
 
@@ -47,6 +50,7 @@ document.getElementById("stopButton").addEventListener("click", function() {
     document.getElementById("startButton").style.display = 'block';
     document.getElementById("status").innerText = "Status: Stopped";
     stopLocationTracking();
+    clearCheckpointCircles(); // Clear the checkpoint circles when the run stops
 });
 
 function initMap() {
@@ -77,7 +81,7 @@ function stopLocationTracking() {
 }
 
 function drawCheckpointCircles() {
-    checkpoints.forEach((checkpoint, index) => {
+    checkpoints.forEach(checkpoint => {
         const checkpointLocation = new google.maps.LatLng(checkpoint.lat, checkpoint.lng);
         const checkpointCircle = new google.maps.Circle({
             strokeColor: '#FF0000',
@@ -97,7 +101,7 @@ function drawCheckpointCircles() {
 // Function to clear checkpoint circles
 function clearCheckpointCircles() {
     checkpointCircles.forEach(circle => circle.setMap(null));
-    checkpointCircles = []; // Reset the array
+    checkpointCircles = [];
 }
 
 function handleLocationUpdate(position) {
