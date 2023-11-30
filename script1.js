@@ -66,6 +66,30 @@ function stopLocationTracking() {
     }
 }
 
+function drawCheckpointCircles() {
+    checkpoints.forEach((checkpoint, index) => {
+        const checkpointLocation = new google.maps.LatLng(checkpoint.lat, checkpoint.lng);
+        const checkpointCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: checkpointLocation,
+            radius: checkpoint.radius
+        });
+
+        checkpointCircles.push(checkpointCircle);
+    });
+}
+
+// Function to clear checkpoint circles
+function clearCheckpointCircles() {
+    checkpointCircles.forEach(circle => circle.setMap(null));
+    checkpointCircles = []; // Reset the array
+}
+
 function handleLocationUpdate(position) {
     const userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -143,3 +167,4 @@ function playAudio(audioKey) {
     const audio = new Audio(audioFiles[audioKey]);
     audio.play();
 }
+
