@@ -136,7 +136,7 @@ function handleLocationUpdate(position) {
                 strokeWeight: 2,
             });
 
-            // Change the factor to grow or shrink the circle size
+            // Change the factor to grow or shrink the circle size yay
             scaleFactor = (scaleFactor + 0.1) % 2;
         }, 150);
     } else {
