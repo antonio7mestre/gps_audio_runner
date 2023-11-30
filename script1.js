@@ -23,7 +23,7 @@ const checkpoints = [
 
 document.getElementById("startButton").addEventListener("click", function() {
     // Play a silent sound to activate audio context on iOS
-    let silentAudio = new Audio('path/to/silent.mp3'); // Make sure you have a silent.mp3 file at the specified path
+    let silentAudio = new Audio('audio/audio0.mp3'); // Make sure you have a silent.mp3 file at the specified path
     silentAudio.play().then(() => {
         console.log('Silent audio played successfully');
     }).catch((e) => {
