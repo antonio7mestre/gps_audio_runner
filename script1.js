@@ -12,7 +12,7 @@ const audioFiles = {
     "checkpoint7": "audio/audio7.mp3"
 };
 const checkpoints = [
-    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 30, audioKey: "checkpoint1", audioPlayed: false }, // Example coordinates and radius
+    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 31, audioKey: "checkpoint1", audioPlayed: false }, // Example coordinates and radius
     { lat: 38.89095162561316, lng: -77.09519500334783, radius: 30, audioKey: "checkpoint2", audioPlayed: false },
     { lat: 38.89139152494132, lng: -77.09419741012081, radius: 30, audioKey: "checkpoint3", audioPlayed: false },
     { lat: 38.891828469221075, lng: -77.09312395428827, radius: 30, audioKey: "checkpoint4", audioPlayed: false },
@@ -136,7 +136,7 @@ function handleLocationUpdate(position) {
                 strokeWeight: 2,
             });
 
-            // Change the factor to grow or shrink the circle size yay
+            // Change the factor to grow or shrink the circle size yayy
             scaleFactor = (scaleFactor + 0.1) % 2;
         }, 150);
     } else {
