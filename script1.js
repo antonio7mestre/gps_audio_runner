@@ -12,22 +12,32 @@ const audioFiles = {
     "checkpoint7": "audio/audio7.mp3"
 };
 const checkpoints = [
-    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 15, audioKey: "checkpoint1" }, // Example coordinates and radius
-    { lat: 38.89095162561316, lng: -77.09519500334783, radius: 15, audioKey: "checkpoint2" },
-    { lat: 38.89139152494132, lng: -77.09419741012081, radius: 15, audioKey: "checkpoint3" },
-    { lat: 38.891828469221075, lng: -77.09312395428827, radius: 15, audioKey: "checkpoint4" },
-    { lat: 38.89112581426466, lng: -77.09258153669099, radius: 15, audioKey: "checkpoint5" },
-    { lat: 38.890257819137375, lng: -77.09200877403829, radius: 15, audioKey: "checkpoint6" },
-    { lat: 38.88933076498764, lng: -77.09188739388492, radius: 15, audioKey: "checkpoint7" }
+    { lat: 38.890760751698224, lng: -77.09456107931626, radius: 20, audioKey: "checkpoint1" }, // Example coordinates and radius
+    { lat: 38.89095162561316, lng: -77.09519500334783, radius: 20, audioKey: "checkpoint2" },
+    { lat: 38.89139152494132, lng: -77.09419741012081, radius: 20, audioKey: "checkpoint3" },
+    { lat: 38.891828469221075, lng: -77.09312395428827, radius: 20, audioKey: "checkpoint4" },
+    { lat: 38.89112581426466, lng: -77.09258153669099, radius: 20, audioKey: "checkpoint5" },
+    { lat: 38.890257819137375,  lng: -77.09525647142884, radius: 20, audioKey: "checkpoint6" },
+    { lat: 38.89076474397313, lng: -77.09514361335668, radius: 20, audioKey: "checkpoint7" }
 ];
 
 document.getElementById("startButton").addEventListener("click", function() {
+    // Play a silent sound to activate audio context on iOS
+    let silentAudio = new Audio('path/to/silent.mp3'); // Make sure you have a silent.mp3 file at the specified path
+    silentAudio.play().then(() => {
+        console.log('Silent audio played successfully');
+    }).catch((e) => {
+        console.error('Error playing silent audio', e);
+    });
+
+    // Now start the run as usual
     console.log("Run started");
     isRunning = true;
     this.style.display = 'none';
     document.getElementById("stopButton").style.display = 'block';
     document.getElementById("status").innerText = "Status: Running...";
     startLocationTracking();
+    // Any other code you have for starting the run...
 });
 
 document.getElementById("stopButton").addEventListener("click", function() {
